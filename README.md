@@ -1,5 +1,6 @@
 # Pontos de observação no teste de caixa branca:
 
+
 ## A DOCUMENTAÇÃO FOI DESCRITA NO CÓDIGO?
 Não.
 ## AS VARIÁVEIS E CONSTANTES POSSUEM BOA NOMENCLATURA?
