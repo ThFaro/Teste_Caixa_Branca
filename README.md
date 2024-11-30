@@ -1,42 +1,50 @@
-# **ERROS ENCONTRADOS NO CÓDIGO**
+## Identificação dos Pontos (Nodos) no Código
 
-
-## **1. INJEÇÃO DE SQL**
-- Concatenação direta de valores do usuário na consulta SQL, permitindo ataques de injeção.
-
----
-
-## **2. CONEXÃO NÃO FECHADA**
-- Os recursos **`Connection`**, **`Statement`** e **`ResultSet`** não são fechados.
-
----
-
-## **3. CREDENCIAIS HARD-CODED**
-- As credenciais do banco de dados estão embutidas no código.
+1. **Ponto de entrada do programa** (`main`)  
+2. **Chamado ao método** `verificarUsuario`  
+3. **Conexão com o banco de dados** no método `conectarBD`  
+4. **Construção da consulta SQL** no método `verificarUsuario`  
+5. **Execução do comando SQL** (`ResultSet rs = st.executeQuery(sql)`)  
+6. **Validação do resultado** (`if (rs.next())`)  
+7. **Definição de `result = true` e recuperação do nome**  
+8. **Saída do programa indicando sucesso ou falha**  
 
 ---
 
-## **4. POSSÍVEL NullPointerException**
-- Se a conexão falhar, o código pode gerar um **`NullPointerException`** ao tentar usar um objeto `null`.
+## Conexão entre os Pontos (Arestas)
+
+
+- **1 → 2**: Entrada do programa chama `verificarUsuario`  
+- **2 → 3**: Chamada ao método `conectarBD`  
+- **2 → 4**: Construção da consulta SQL  
+- **4 → 5**: Execução da consulta SQL  
+- **5 → 6**: Validação do resultado da consulta  
+- **6 → 7**: Se `rs.next() == true`, o usuário é válido  
+- **6 → 8**: Caso contrário, o usuário ou senha são inválidos  
 
 ---
 
-## **5. EXPOSIÇÃO DE ERROS**
-- O uso de **`e.printStackTrace()`** pode expor informações sensíveis.
+## Grafo de Fluxo do Código
+
+![Grafo de Fluxo](grafo.png)
 
 ---
 
-## **6. VALIDAÇÃO DE ENTRADA AUSENTE**
-- Os parâmetros **`login`** e **`senha`** estão sem validação.
-  
+## Complexidade Ciclomática
+
+\(
+M = E - N + 2
+\)
+
+- **E (Arestas)**: 7
+- **N (Nodos)**: 8
+
+**Resultado:** M = 1.
+
 ---
 
-## **7. SENHAS EM TEXTO PURO**
-- O código assume que as senhas no banco de dados estão armazenadas em texto puro.
-
----
-
-## **8. MENSAGENS DE ERRO GENÉRICAS**
-- Quando os erros são capturados, não fornecem contexto ou mensagens claras.
-
+## Sequências Possíveis
+1. **Caminho 1**: 1 → 2 → 3  
+2. **Caminho 2**: 1 → 2 → 4 → 5 → 6 → 7  
+3. **Caminho 3**: 1 → 2 → 4 → 5 → 6 → 8  
 
