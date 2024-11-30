@@ -1,10 +1,8 @@
--- Criar o banco de dados
+
 CREATE DATABASE test;
 
--- Usar o banco de dados
 USE test;
 
--- Criar a tabela usuarios
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     login VARCHAR(50) NOT NULL,
@@ -12,7 +10,6 @@ CREATE TABLE usuarios (
     nome VARCHAR(100) NOT NULL
 );
 
--- Inserir registros de exemplo
 INSERT INTO usuarios (login, senha, nome) VALUES
 ('usuario1', 'senha1', 'João Silva'),
 ('usuario2', 'senha2', 'Maria Oliveira'),
