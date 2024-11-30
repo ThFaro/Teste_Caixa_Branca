@@ -1,4 +1,4 @@
-## Passo 1: Identificação dos Pontos (Nodos) no Código
+## Identificação dos Pontos (Nodos) no Código
 
 1. **Ponto de entrada do programa** (`main`)  
 2. **Chamado ao método** `verificarUsuario`  
@@ -11,7 +11,7 @@
 
 ---
 
-## Passo 2: Conexão entre os Pontos (Arestas)
+## Conexão entre os Pontos (Arestas)
 
 
 - **1 → 2**: Entrada do programa chama `verificarUsuario`  
@@ -21,4 +21,31 @@
 - **5 → 6**: Validação do resultado da consulta  
 - **6 → 7**: Se `rs.next() == true`, o usuário é válido  
 - **6 → 8**: Caso contrário, o usuário ou senha são inválidos  
+
+---
+
+## Grafo de Fluxo do Código
+
+![Grafo de Fluxo](grafo.png)
+
+---
+
+## Complexidade Ciclomática
+
+\(
+M = E - N + 2
+\)
+
+- **E (Arestas)**: 7
+- **N (Nodos)**: 8
+
+**Resultado:** M = 1.
+
+---
+
+## Sequências Possíveis
+1. **Caminho 1**: 1 → 2 → 3  
+2. **Caminho 2**: 1 → 2 → 4 → 5 → 6 → 7  
+3. **Caminho 3**: 1 → 2 → 4 → 5 → 6 → 8  
+
 
